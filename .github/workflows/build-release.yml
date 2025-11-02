@@ -23,7 +23,7 @@ jobs:
         run: |
           dotnet publish -c Release -r win-x64 --self-contained false -o ./publish
           cd publish
-          zip -r ../app-${{ github.ref_name }}.zip *
+          zip -r ../hwmonitor-${{ github.ref_name }}.zip *
           cd ..
 
       - name: Create Release
@@ -39,7 +39,7 @@ jobs:
             ### Changes:
             - Add your release notes here.
           files: |
-            ./app-${{ github.ref_name }}.zip
+            ./hwmonitor-${{ github.ref_name }}.zip
           draft: false # Set to true to create a draft release
           prerelease: false # Set to true for a prerelease
           generate_release_notes: true # Automatically generate release notes based on commits
