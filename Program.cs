@@ -51,6 +51,7 @@ namespace hwmonitor
                 }
                 if (args.Length > 0 && args[0].Equals("-testdevice"))
                 {
+                    service.DumpToConsole = true;
                     service.StartAsApp(args);
                     service.Thread.Join();
                 }

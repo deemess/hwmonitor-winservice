@@ -50,6 +50,7 @@ namespace hwmonitor
         public String Gpu2TxtEnd { get; set; }
         public String SensorIdGpu2 { get; set; }
         public String SensorIdGpu2Temp { get; set; }
+        public bool DumpToConsole { get; set; }
 
 
         private Dictionary<String, String> sensorNameToId = new Dictionary<String, String>();
@@ -310,7 +311,10 @@ namespace hwmonitor
                 hardwareData.AppendLine($"GPU1TXT:{Gpu1Txt}{sensorIdToValue[sensorNameToId["SensorIdGpu1Temp"]].Substring(1)}{Gpu1TxtEnd}");
                 hardwareData.AppendLine($"GPU2TXT:{Gpu2Txt}{sensorIdToValue[sensorNameToId["SensorIdGpu2Temp"]].Substring(1)}{Gpu2TxtEnd}");
 
-                Console.WriteLine(hardwareData.ToString());
+                if (DumpToConsole)
+                {
+                    Console.WriteLine(hardwareData.ToString());
+                }
 
                 // Send data to COM port
                 SendToComPort(hardwareData.ToString());
